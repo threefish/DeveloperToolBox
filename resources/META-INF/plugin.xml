@@ -1,0 +1,40 @@
+<idea-plugin>
+  <id>com.gitee.threefish.idea.code.tool.plugin</id>
+  <name>CodeTool</name>
+  <version>1.0</version>
+  <idea-version since-build="201"/>
+  <vendor email="huchuc@vip.qq.com" url="https://gitee.com/threefish/">threefish</vendor>
+  <description><![CDATA[
+      <h1>一个方便开发的工具集</h1>
+      <br/>
+      <p>
+      <b>
+      https://gitee.com/threefish/
+      </b>
+      </p>
+    ]]></description>
+
+  <change-notes><![CDATA[
+      1、提供一个spring UrlMapping tree面板双击快速跳转至对应java代码
+    ]]>
+  </change-notes>
+  <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+       on how to target different products -->
+  <depends>com.intellij.modules.platform</depends>
+  <depends>com.intellij.modules.java</depends>
+  <depends>com.intellij.spring.mvc</depends>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <!-- Add your extensions here -->
+    <!--  restful api 工具窗口 -->
+    <toolWindow id="SpringRestfulWindow"
+                anchor="right"
+                secondary="true"
+                factoryClass="com.gitee.threefish.idea.toolwindow.RestfulWindowToolWindowFactory"/>
+  </extensions>
+
+  <actions>
+    <!-- Add your actions here -->
+  </actions>
+
+</idea-plugin>
