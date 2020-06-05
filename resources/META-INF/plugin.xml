@@ -1,6 +1,6 @@
 <idea-plugin>
   <id>com.gitee.threefish.idea.code.tool.plugin</id>
-  <name>CodeTool</name>
+  <name>CodeToolBox</name>
   <version>1.0</version>
   <idea-version since-build="201"/>
   <vendor email="huchuc@vip.qq.com" url="https://gitee.com/threefish/">threefish</vendor>

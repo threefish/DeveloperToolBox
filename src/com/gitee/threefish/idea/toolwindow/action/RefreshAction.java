@@ -4,6 +4,8 @@ import com.gitee.threefish.idea.toolwindow.navigation.SpringRequestMappingNaviga
 import com.gitee.threefish.idea.toolwindow.tree.ApiMutableTreeNode;
 import com.gitee.threefish.idea.toolwindow.tree.TreeObjectType;
 import com.gitee.threefish.idea.toolwindow.tree.TreeRenderer;
+import com.intellij.icons.AllIcons;
+import com.intellij.ide.util.treeView.NodeRenderer;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.module.Module;
@@ -22,11 +24,13 @@ import com.intellij.psi.util.PsiUtil;
 import com.intellij.spring.web.mvc.mapping.UrlMapping;
 import com.intellij.spring.web.mvc.model.mappings.UrlMappingPsiBasedElement;
 import com.intellij.spring.web.mvc.services.SpringMvcService;
+import com.intellij.ui.treeStructure.SimpleTree;
 import com.intellij.xml.util.PsiElementPointer;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreeCellRenderer;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -39,9 +43,9 @@ public class RefreshAction extends DumbAwareAction {
 
     private final ToolWindowEx toolWindowEx;
 
-    private final JTree apiTree;
+    private final SimpleTree apiTree;
 
-    public RefreshAction(String text, String description, Icon icon, ToolWindowEx toolWindowEx, JTree apiTree) {
+    public RefreshAction(String text, String description, Icon icon, ToolWindowEx toolWindowEx, SimpleTree apiTree) {
         super(text, description, icon);
         this.toolWindowEx = toolWindowEx;
         this.apiTree = apiTree;
@@ -93,6 +97,10 @@ public class RefreshAction extends DumbAwareAction {
                         }
                         root.setName("Found " + size + " api");
                         //设置该JTree使用自定义的节点绘制器
+                        TreeCellRenderer cellRenderer = apiTree.getCellRenderer();
+                        if(cellRenderer instanceof  com.intellij.ide.util.treeView.NodeRenderer ){
+                            NodeRenderer nodeRenderer= (NodeRenderer) cellRenderer;
+                        }
                         apiTree.setCellRenderer(new TreeRenderer());
                         apiTree.setModel(new DefaultTreeModel(root));
                     });

@@ -37,6 +37,7 @@ public class ApiTreeMouseAdapter extends MouseAdapter {
                     TreeObjectType treeObjectType = node.getTreeObjectType();
                     if (!(treeObjectType == TreeObjectType.MODULE || treeObjectType == TreeObjectType.ROOT)) {
                         SpringRequestMappingNavigationItem springRequestMappingNavigationItem = node.getSpringRequestMappingNavigationItem();
+                        //PsiNavigateUtil.navigate(springRequestMappingNavigationItem);
                         if (Objects.nonNull(node) && springRequestMappingNavigationItem.canNavigate()) {
                             springRequestMappingNavigationItem.navigate(true);
                         }
