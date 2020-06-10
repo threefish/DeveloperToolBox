@@ -39,9 +39,8 @@ public class RestfulWindowToolWindowFactory implements ToolWindowFactory, DumbAw
         RefreshAction refreshAction = new RefreshAction("刷新", "重新加载URL", AllIcons.Actions.Refresh, toolWindowEx, apiTree);
         toolWindowEx.setTitleActions(refreshAction);
         apiTree.addMouseListener(new ApiTreeMouseAdapter(apiTree));
-        JPanel panel = new RestServicesNavigatorPanel(project, apiTree);
         ContentManager contentManager = toolWindow.getContentManager();
-        Content content = contentManager.getFactory().createContent(panel, null, false);
+        Content content = contentManager.getFactory().createContent(new RestServicesNavigatorPanel(apiTree), null, false);
         contentManager.addContent(content);
         contentManager.setSelectedContent(content);
         if (project.isInitialized()) {
