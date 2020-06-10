@@ -40,13 +40,11 @@ public class RestServicesNavigatorPanel extends SimpleToolWindowPanel implements
         myTree = tree;
         JScrollPane scrollPane = ScrollPaneFactory.createScrollPane(myTree);
         scrollPane.setBorder(BorderFactory.createLineBorder(Color.RED));
-
         servicesContentPaneSplitter = new Splitter(true, .5f);
         servicesContentPaneSplitter.setShowDividerControls(true);
         servicesContentPaneSplitter.setDividerWidth(10);
         servicesContentPaneSplitter.setBorder(BorderFactory.createLineBorder(Color.RED));
         servicesContentPaneSplitter.setFirstComponent(scrollPane);
-
         setContent(servicesContentPaneSplitter);
     }
 

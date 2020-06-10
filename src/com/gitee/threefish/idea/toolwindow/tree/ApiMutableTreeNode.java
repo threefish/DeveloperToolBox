@@ -1,9 +1,6 @@
 package com.gitee.threefish.idea.toolwindow.tree;
 
 
-import com.gitee.threefish.idea.toolwindow.navigation.SpringRequestMappingNavigationItem;
-import com.intellij.spring.web.mvc.jam.RequestMethod;
-
 import javax.swing.tree.DefaultMutableTreeNode;
 
 /**
@@ -12,51 +9,23 @@ import javax.swing.tree.DefaultMutableTreeNode;
  */
 public class ApiMutableTreeNode extends DefaultMutableTreeNode {
 
-    private SpringRequestMappingNavigationItem urlMappingPsiBasedElement;
-
-    private final TreeObjectType treeObjectType;
-
-    private String name;
-
-    private RequestMethod[] requestMethods;
-
-    public ApiMutableTreeNode(TreeObjectType treeObjectType, String name) {
-        super(name);
-        this.treeObjectType = treeObjectType;
-        this.name = name;
+    public ApiMutableTreeNode() {
     }
 
-    public ApiMutableTreeNode(SpringRequestMappingNavigationItem urlMappingPsiBasedElement, RequestMethod[] requestMethods) {
-        super(urlMappingPsiBasedElement.getText());
-        this.name = urlMappingPsiBasedElement.getText();
-        this.urlMappingPsiBasedElement = urlMappingPsiBasedElement;
-        this.treeObjectType = TreeObjectType.REQUEST;
-        this.requestMethods = requestMethods;
+    public ApiMutableTreeNode(TreeNodeObject nodeObjectNodeDescriptor) {
+        this.userObject = nodeObjectNodeDescriptor;
+    }
 
+
+    @Override
+    public Object getUserObject() {
+        return this.userObject;
     }
 
     @Override
     public String toString() {
-        return name;
+        return this.userObject.toString();
     }
 
-    public SpringRequestMappingNavigationItem getSpringRequestMappingNavigationItem() {
-        return urlMappingPsiBasedElement;
-    }
 
-    public TreeObjectType getTreeObjectType() {
-        return treeObjectType;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public RequestMethod[] getRequestMethods() {
-        return requestMethods;
-    }
 }

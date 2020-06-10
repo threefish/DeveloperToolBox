@@ -3,9 +3,10 @@ package com.gitee.threefish.idea.toolwindow.action;
 
 import com.gitee.threefish.idea.toolwindow.navigation.SpringRequestMappingNavigationItem;
 import com.gitee.threefish.idea.toolwindow.tree.ApiMutableTreeNode;
+import com.gitee.threefish.idea.toolwindow.tree.TreeNodeObject;
 import com.gitee.threefish.idea.toolwindow.tree.TreeObjectType;
+import com.intellij.ui.treeStructure.SimpleTree;
 
-import javax.swing.*;
 import javax.swing.tree.TreePath;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -17,16 +18,16 @@ import java.util.Objects;
  */
 public class ApiTreeMouseAdapter extends MouseAdapter {
 
-    private final JTree apiTree;
+    private final SimpleTree apiTree;
 
-    public ApiTreeMouseAdapter(JTree apiTree) {
+    public ApiTreeMouseAdapter(SimpleTree apiTree) {
         this.apiTree = apiTree;
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
         // 如果在这棵树上点击了2次,即双击
-        if (e.getButton() == MouseEvent.BUTTON1 && e.getSource() == apiTree && e.getClickCount() == 2) {
+        if (e.getButton() == MouseEvent.BUTTON1 && e.getClickCount() == 2) {
             // 按照鼠标点击的坐标点获取路径
             TreePath selPath = apiTree.getPathForLocation(e.getX(), e.getY());
             // 谨防空指针异常!双击空白处是会这样
@@ -34,9 +35,9 @@ public class ApiTreeMouseAdapter extends MouseAdapter {
                 // 获取这个路径上的最后一个组件,也就是双击的地方
                 ApiMutableTreeNode node = (ApiMutableTreeNode) selPath.getLastPathComponent();
                 if (Objects.nonNull(node)) {
-                    TreeObjectType treeObjectType = node.getTreeObjectType();
-                    if (!(treeObjectType == TreeObjectType.MODULE || treeObjectType == TreeObjectType.ROOT)) {
-                        SpringRequestMappingNavigationItem springRequestMappingNavigationItem = node.getSpringRequestMappingNavigationItem();
+                    TreeNodeObject userObject = (TreeNodeObject) node.getUserObject();
+                    if (!(userObject.getTreeObjectType() == TreeObjectType.MODULE || userObject.getTreeObjectType() == TreeObjectType.ROOT)) {
+                        SpringRequestMappingNavigationItem springRequestMappingNavigationItem = userObject.getUrlMappingPsiBasedElement();
                         //PsiNavigateUtil.navigate(springRequestMappingNavigationItem);
                         if (Objects.nonNull(node) && springRequestMappingNavigationItem.canNavigate()) {
                             springRequestMappingNavigationItem.navigate(true);

@@ -32,7 +32,7 @@ public class RestfulWindowToolWindowFactory implements ToolWindowFactory, DumbAw
     private static final String TITLE = "Spring Api Tool";
     private final RestfulTreePanel restfulTreePanel = new RestfulTreePanel();
     private ToolWindowEx toolWindowEx;
-    private SimpleTree myTree;
+    private SimpleTree apiTree;
 
     @Override
     public void createToolWindowContent(@NotNull Project project, @NotNull ToolWindow toolWindow) {
@@ -40,10 +40,10 @@ public class RestfulWindowToolWindowFactory implements ToolWindowFactory, DumbAw
         apiTree.setModel(null);
         initTree(project);
         this.toolWindowEx = (ToolWindowEx) toolWindow;
-        RefreshAction refreshAction = new RefreshAction("刷新", "重新加载URL", AllIcons.Actions.Refresh, toolWindowEx, myTree);
+        RefreshAction refreshAction = new RefreshAction("刷新", "重新加载URL", AllIcons.Actions.Refresh, toolWindowEx, this.apiTree);
         toolWindowEx.setTitleActions(refreshAction);
-        myTree.addMouseListener(new ApiTreeMouseAdapter(apiTree));
-        JPanel panel = new RestServicesNavigatorPanel(project, myTree);
+        this.apiTree.addMouseListener(new ApiTreeMouseAdapter(this.apiTree));
+        JPanel panel = new RestServicesNavigatorPanel(project, this.apiTree);
         ContentManager contentManager = toolWindow.getContentManager();
         Content content = contentManager.getFactory().createContent(panel, null, false);
         contentManager.addContent(content);
@@ -55,7 +55,7 @@ public class RestfulWindowToolWindowFactory implements ToolWindowFactory, DumbAw
 
 
     private void initTree(Project project) {
-        myTree = new SimpleTree() {
+        apiTree = new SimpleTree() {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
@@ -79,8 +79,8 @@ public class RestfulWindowToolWindowFactory implements ToolWindowFactory, DumbAw
                 }
             }
         };
-        myTree.getEmptyText().clear();
-        myTree.getSelectionModel().setSelectionMode(TreeSelectionModel.DISCONTIGUOUS_TREE_SELECTION);
+        apiTree.getEmptyText().clear();
+        apiTree.getSelectionModel().setSelectionMode(TreeSelectionModel.DISCONTIGUOUS_TREE_SELECTION);
     }
 
     @Override
