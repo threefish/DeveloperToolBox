@@ -17,7 +17,7 @@ public class RestServicesNavigatorPanel extends SimpleToolWindowPanel {
 
     private final SimpleTree apiTree;
 
-    private Splitter servicesContentPaneSplitter;
+    private final Splitter servicesContentPaneSplitter;
 
     public RestServicesNavigatorPanel(SimpleTree tree) {
         super(true, true);

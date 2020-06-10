@@ -28,8 +28,8 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultTreeModel;
-import java.util.HashSet;
-import java.util.Set;
+import java.text.Collator;
+import java.util.*;
 
 /**
  * @author 黄川 huchuc@vip.qq.com
@@ -38,8 +38,8 @@ import java.util.Set;
 public class RefreshAction extends DumbAwareAction {
 
 
+    private final static Comparator COMPARATOR = Collator.getInstance(Locale.ENGLISH);
     private final ToolWindowEx toolWindowEx;
-
     private final SimpleTree apiTree;
 
     public RefreshAction(String text, String description, Icon icon, ToolWindowEx toolWindowEx, SimpleTree apiTree) {
@@ -69,6 +69,7 @@ public class RefreshAction extends DumbAwareAction {
                             SpringMvcService springMvcService = SpringMvcService.getInstance();
                             Set<UrlMapping<?>> urlMappings = springMvcService.getUrlMappings(module);
                             ApiMutableTreeNode apiMutableTreeNode = new ApiMutableTreeNode(new TreeNodeObject(project, TreeObjectType.MODULE, module.getName()));
+                            List<ApiMutableTreeNode> list = new ArrayList<>();
                             for (UrlMapping<?> urlMapping : urlMappings) {
                                 if (urlMapping instanceof UrlMappingPsiBasedElement) {
                                     UrlMappingPsiBasedElement urlMappingPsiBasedElement = (UrlMappingPsiBasedElement) urlMapping;
@@ -81,13 +82,17 @@ public class RefreshAction extends DumbAwareAction {
                                         progressIndicator.setText(urlMapping.getURL());
                                         PsiElement psiElement = urlMappingPsiBasedElement.getDefinition().getPsiElement();
                                         repeat.add(urlMapping.getURL());
-                                        apiMutableTreeNode.add(new ApiMutableTreeNode(
+                                        list.add(new ApiMutableTreeNode(
                                                 new TreeNodeObject(project,
                                                         new SpringRequestMappingNavigationItem(psiElement, urlMapping.getURL()),
                                                         urlMappingPsiBasedElement.getMethod()))
                                         );
                                     }
                                 }
+                            }
+                            if (list.size() > 0) {
+                                Collections.sort(list, (o1, o2) -> COMPARATOR.compare(o1.toString(), o2.toString()));
+                                list.forEach(mutableTreeNode -> apiMutableTreeNode.add(mutableTreeNode));
                             }
                             if (apiMutableTreeNode.getChildCount() > 0) {
                                 root.add(apiMutableTreeNode);

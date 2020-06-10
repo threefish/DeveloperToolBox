@@ -21,10 +21,10 @@ public class TreeNodeObject extends NodeDescriptor {
     private static final Icon GET = IconLoader.findIcon("/icons/GET.png");
     private static final Icon PUT = IconLoader.findIcon("/icons/PUT.png");
     private static final Icon DELETE = IconLoader.findIcon("/icons/DELETE.png");
-    private TreeObjectType treeObjectType;
+    private final TreeObjectType treeObjectType;
     private SpringRequestMappingNavigationItem urlMappingPsiBasedElement;
-    private String name;
-    private Project project;
+    private final String name;
+    private final Project project;
     private RequestMethod[] requestMethods;
 
     public TreeNodeObject(Project project, TreeObjectType treeObjectType, String name) {
