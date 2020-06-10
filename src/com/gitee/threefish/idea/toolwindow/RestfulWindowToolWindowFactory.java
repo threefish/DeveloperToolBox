@@ -4,6 +4,7 @@ import com.gitee.threefish.idea.toolwindow.action.ApiTreeMouseAdapter;
 import com.gitee.threefish.idea.toolwindow.action.RefreshAction;
 import com.gitee.threefish.idea.toolwindow.ui.RestServicesNavigatorPanel;
 import com.intellij.icons.AllIcons;
+import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.project.DumbAware;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.wm.ToolWindow;
@@ -27,15 +28,16 @@ import javax.swing.tree.TreeSelectionModel;
 public class RestfulWindowToolWindowFactory implements ToolWindowFactory, DumbAware {
 
     private static final String TITLE = "Spring Api Tool";
-    private ToolWindowEx toolWindowEx;
     private final SimpleTree apiTree = new SimpleTree();
+    private final ActionManager actionManager = ActionManager.getInstance();
+    private ToolWindowEx toolWindowEx;
 
     @Override
     public void createToolWindowContent(@NotNull Project project, @NotNull ToolWindow toolWindow) {
         apiTree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
         this.toolWindowEx = (ToolWindowEx) toolWindow;
         RefreshAction refreshAction = new RefreshAction("刷新", "重新加载URL", AllIcons.Actions.Refresh, toolWindowEx, apiTree);
-        toolWindowEx.setTitleActions(refreshAction);
+        toolWindowEx.setTitleActions(refreshAction, actionManager.getAction("GoToSpringRequestMapping"));
         apiTree.addMouseListener(new ApiTreeMouseAdapter(apiTree));
         ContentManager contentManager = toolWindow.getContentManager();
         Content content = contentManager.getFactory().createContent(new RestServicesNavigatorPanel(apiTree), null, false);

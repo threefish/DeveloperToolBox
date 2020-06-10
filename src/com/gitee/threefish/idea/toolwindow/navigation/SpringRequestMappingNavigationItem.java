@@ -1,12 +1,13 @@
 package com.gitee.threefish.idea.toolwindow.navigation;
 
+import com.gitee.threefish.idea.util.Icons;
 import com.intellij.psi.PsiElement;
+import com.intellij.spring.web.mvc.jam.RequestMethod;
 import com.intellij.util.xml.model.gotosymbol.GoToSymbolProvider;
 import icons.SpringApiIcons;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import javax.swing.*;
 
 /**
  * @author 黄川 huchuc@vip.qq.com
@@ -21,11 +22,10 @@ public class SpringRequestMappingNavigationItem extends GoToSymbolProvider.BaseN
         this.text = text;
     }
 
-    public SpringRequestMappingNavigationItem(@NotNull PsiElement psiElement, @NotNull String text, @Nullable Icon icon) {
-        super(psiElement, text, SpringApiIcons.RequestMapping);
+    public SpringRequestMappingNavigationItem(@NotNull PsiElement psiElement, @NotNull String text, RequestMethod[] method) {
+        super(psiElement, text, Icons.getMethodIcon(method));
         this.text = text;
     }
-
 
     @Nullable
     @Override

@@ -35,6 +35,10 @@
 
   <actions>
     <!-- Add your actions here -->
+    <action id="GoToSpringRequestMapping" class="com.gitee.threefish.idea.action.GoToRequestMappingAction"
+            text="Find Spring Request Mapping Url" description="Find Spring Request Mapping Url" icon="/icons/find.png">
+    </action>
+
   </actions>
 
 </idea-plugin>
