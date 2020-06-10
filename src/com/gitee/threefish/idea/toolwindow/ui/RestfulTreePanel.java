@@ -1,6 +1,7 @@
 package com.gitee.threefish.idea.toolwindow.ui;
 
 import com.intellij.openapi.ui.SimpleToolWindowPanel;
+import com.intellij.ui.treeStructure.SimpleTree;
 
 import javax.swing.*;
 
@@ -15,6 +16,7 @@ public class RestfulTreePanel extends SimpleToolWindowPanel {
 
     public RestfulTreePanel() {
         super(true, true);
+        apiTree = new SimpleTree();
         setContent(rootPanel);
     }
 

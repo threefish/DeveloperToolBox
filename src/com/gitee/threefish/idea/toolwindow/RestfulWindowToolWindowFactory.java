@@ -3,7 +3,6 @@ package com.gitee.threefish.idea.toolwindow;
 import com.gitee.threefish.idea.toolwindow.action.ApiTreeMouseAdapter;
 import com.gitee.threefish.idea.toolwindow.action.RefreshAction;
 import com.gitee.threefish.idea.toolwindow.ui.RestServicesNavigatorPanel;
-import com.gitee.threefish.idea.toolwindow.ui.RestfulTreePanel;
 import com.intellij.icons.AllIcons;
 import com.intellij.openapi.project.DumbAware;
 import com.intellij.openapi.project.Project;
@@ -30,20 +29,17 @@ import java.awt.*;
 public class RestfulWindowToolWindowFactory implements ToolWindowFactory, DumbAware {
 
     private static final String TITLE = "Spring Api Tool";
-    private final RestfulTreePanel restfulTreePanel = new RestfulTreePanel();
     private ToolWindowEx toolWindowEx;
     private SimpleTree apiTree;
 
     @Override
     public void createToolWindowContent(@NotNull Project project, @NotNull ToolWindow toolWindow) {
-        JTree apiTree = restfulTreePanel.getApiTree();
-        apiTree.setModel(null);
         initTree(project);
         this.toolWindowEx = (ToolWindowEx) toolWindow;
-        RefreshAction refreshAction = new RefreshAction("刷新", "重新加载URL", AllIcons.Actions.Refresh, toolWindowEx, this.apiTree);
+        RefreshAction refreshAction = new RefreshAction("刷新", "重新加载URL", AllIcons.Actions.Refresh, toolWindowEx, apiTree);
         toolWindowEx.setTitleActions(refreshAction);
-        this.apiTree.addMouseListener(new ApiTreeMouseAdapter(this.apiTree));
-        JPanel panel = new RestServicesNavigatorPanel(project, this.apiTree);
+        apiTree.addMouseListener(new ApiTreeMouseAdapter(apiTree));
+        JPanel panel = new RestServicesNavigatorPanel(project, apiTree);
         ContentManager contentManager = toolWindow.getContentManager();
         Content content = contentManager.getFactory().createContent(panel, null, false);
         contentManager.addContent(content);
