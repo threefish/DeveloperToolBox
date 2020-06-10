@@ -16,6 +16,7 @@
 
   <change-notes><![CDATA[
       1、提供一个spring UrlMapping tree面板双击快速跳转至对应java代码
+      2、添加spring request mapping url查询快速跳转
     ]]>
   </change-notes>
   <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
