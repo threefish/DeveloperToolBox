@@ -1,45 +1,71 @@
 <idea-plugin>
-  <id>com.gitee.threefish.idea.code.tool.plugin</id>
-  <name>CodeToolBox</name>
-  <version>1.0</version>
-  <idea-version since-build="201"/>
-  <vendor email="huchuc@vip.qq.com" url="https://gitee.com/threefish/">threefish</vendor>
-  <description><![CDATA[
-      <h1>一个方便开发的工具集</h1>
+    <id>com.gitee.threefish.idea.code.tool.plugin</id>
+    <name>Developer Tool Box</name>
+    <version>1.0.1</version>
+    <idea-version since-build="201"/>
+    <vendor email="huchuc@vip.qq.com" url="https://gitee.com/threefish/">threefish</vendor>
+    <description><![CDATA[
+      <h1>A toolkit for easy development</h1>
       <br/>
       <p>
-      <b>
-      https://gitee.com/threefish/
+      </b>
+      <a href="https://github.com/threefish">Github</a> |
+      <a href="https://gitee.com/threefish">Gitee</a>
       </b>
       </p>
+      <p>
+       <b>English</b>
+         <ul>
+         <li> Provide a spring UrlMapping tree panel to double-click to quickly jump to the corresponding java code</li>
+         <li> Add spring request mapping url query fast jump</li>
+         <li> Solve the error that "Could not autowire. No beans of'xxx' type found" will be reported in @Mapper intellij in Spring</li>
+         </ul>
+       <b>English</b>
+        <ul>
+         <li> 提供一个spring UrlMapping tree面板双击快速跳转至对应java代码</li>
+         <li> 添加spring request mapping url查询快速跳转</li>
+         <li> 解决在 Spring 中使用 @Mapper intellij 中会报 “Could not autowire. No beans of 'xxx' type found” 的错误</li>
+         </ul>
     ]]></description>
+    <change-notes><![CDATA[
+      <b>1.0.1</b>
+         <ul>
+         <li><h4>English</h4></li>
+         <li> Provide a spring UrlMapping tree panel to double-click to quickly jump to the corresponding java code</li>
+         <li> Add spring request mapping url query fast jump</li>
+         <li> Solve the error that "Could not autowire. No beans of'xxx' type found" will be reported in @Mapper intellij in Spring</li>
 
-  <change-notes><![CDATA[
-      1、提供一个spring UrlMapping tree面板双击快速跳转至对应java代码
-      2、添加spring request mapping url查询快速跳转
+         <li><h4>中文</h4></li>
+         <li> 提供一个spring UrlMapping tree面板双击快速跳转至对应java代码</li>
+         <li> 添加spring request mapping url查询快速跳转</li>
+         <li> 解决在 Spring 中使用 @Mapper intellij 中会报 “Could not autowire. No beans of 'xxx' type found” 的错误</li>
+       </ul>
     ]]>
-  </change-notes>
-  <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
-       on how to target different products -->
-  <depends>com.intellij.modules.platform</depends>
-  <depends>com.intellij.modules.java</depends>
-  <depends>com.intellij.spring.mvc</depends>
+    </change-notes>
+    <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.java</depends>
+    <depends>com.intellij.spring.mvc</depends>
+    <depends>com.intellij.spring</depends>
+    <extensions defaultExtensionNs="com.intellij.spring">
+        <componentScanExtender implementation="com.gitee.threefish.idea.mybatis.MybatisComponentScanExtender"/>
+    </extensions>
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+        <!--  restful api 工具窗口 -->
+        <toolWindow id="SpringRestfulWindow"
+                    anchor="right"
+                    secondary="true"
+                    factoryClass="com.gitee.threefish.idea.spring.toolwindow.RestfulWindowToolWindowFactory"/>
+    </extensions>
 
-  <extensions defaultExtensionNs="com.intellij">
-    <!-- Add your extensions here -->
-    <!--  restful api 工具窗口 -->
-    <toolWindow id="SpringRestfulWindow"
-                anchor="right"
-                secondary="true"
-                factoryClass="com.gitee.threefish.idea.toolwindow.RestfulWindowToolWindowFactory"/>
-  </extensions>
+    <actions>
+        <!-- Add your actions here -->
+        <action id="GoToSpringRequestMapping" class="com.gitee.threefish.idea.spring.action.GoToRequestMappingAction"
+                text="Find Spring Request Mapping Url" description="Find Spring Request Mapping Url" icon="/icons/find.png">
+        </action>
 
-  <actions>
-    <!-- Add your actions here -->
-    <action id="GoToSpringRequestMapping" class="com.gitee.threefish.idea.action.GoToRequestMappingAction"
-            text="Find Spring Request Mapping Url" description="Find Spring Request Mapping Url" icon="/icons/find.png">
-    </action>
-
-  </actions>
+    </actions>
 
 </idea-plugin>

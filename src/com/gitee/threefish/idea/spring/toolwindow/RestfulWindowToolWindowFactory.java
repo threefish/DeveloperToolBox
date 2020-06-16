@@ -1,8 +1,8 @@
-package com.gitee.threefish.idea.toolwindow;
+package com.gitee.threefish.idea.spring.toolwindow;
 
-import com.gitee.threefish.idea.toolwindow.action.ApiTreeMouseAdapter;
-import com.gitee.threefish.idea.toolwindow.action.RefreshAction;
-import com.gitee.threefish.idea.toolwindow.ui.RestServicesNavigatorPanel;
+import com.gitee.threefish.idea.spring.toolwindow.action.ApiTreeMouseAdapter;
+import com.gitee.threefish.idea.spring.toolwindow.action.RefreshAction;
+import com.gitee.threefish.idea.spring.toolwindow.ui.RestServicesNavigatorPanel;
 import com.intellij.icons.AllIcons;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.project.DumbAware;

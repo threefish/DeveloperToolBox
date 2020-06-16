@@ -1,4 +1,4 @@
-package com.gitee.threefish.idea.toolwindow.ui;
+package com.gitee.threefish.idea.spring.toolwindow.ui;
 
 import com.intellij.openapi.ui.SimpleToolWindowPanel;
 import com.intellij.openapi.ui.Splitter;

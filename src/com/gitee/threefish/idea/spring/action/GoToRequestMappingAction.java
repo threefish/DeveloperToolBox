@@ -1,7 +1,7 @@
-package com.gitee.threefish.idea.action;
+package com.gitee.threefish.idea.spring.action;
 
-import com.gitee.threefish.idea.gotosymbol.AtMappingModel;
-import com.gitee.threefish.idea.toolwindow.navigation.SpringRequestMappingNavigationItem;
+import com.gitee.threefish.idea.spring.gotosymbol.AtMappingModel;
+import com.gitee.threefish.idea.spring.toolwindow.navigation.SpringRequestMappingNavigationItem;
 import com.intellij.ide.actions.GotoActionBase;
 import com.intellij.ide.util.gotoByName.ChooseByNamePopup;
 import com.intellij.openapi.actionSystem.AnActionEvent;

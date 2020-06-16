@@ -1,6 +1,6 @@
-package com.gitee.threefish.idea.gotosymbol;
+package com.gitee.threefish.idea.spring.gotosymbol;
 
-import com.gitee.threefish.idea.toolwindow.navigation.SpringRequestMappingNavigationItem;
+import com.gitee.threefish.idea.spring.toolwindow.navigation.SpringRequestMappingNavigationItem;
 import com.intellij.navigation.ChooseByNameContributor;
 import com.intellij.navigation.NavigationItem;
 import com.intellij.openapi.module.Module;

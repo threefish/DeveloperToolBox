@@ -1,4 +1,4 @@
-package com.gitee.threefish.idea.gotosymbol;
+package com.gitee.threefish.idea.spring.gotosymbol;
 
 import com.intellij.ide.highlighter.JavaFileType;
 import com.intellij.ide.util.gotoByName.FilteringGotoByModel;

@@ -1,4 +1,4 @@
-package com.gitee.threefish.idea.toolwindow.navigation;
+package com.gitee.threefish.idea.spring.toolwindow.navigation;
 
 import com.gitee.threefish.idea.util.Icons;
 import com.intellij.psi.PsiElement;

@@ -1,10 +1,10 @@
-package com.gitee.threefish.idea.toolwindow.action;
+package com.gitee.threefish.idea.spring.toolwindow.action;
 
 
-import com.gitee.threefish.idea.toolwindow.navigation.SpringRequestMappingNavigationItem;
-import com.gitee.threefish.idea.toolwindow.tree.ApiMutableTreeNode;
-import com.gitee.threefish.idea.toolwindow.tree.TreeNodeObject;
-import com.gitee.threefish.idea.toolwindow.tree.TreeObjectTypeEnum;
+import com.gitee.threefish.idea.spring.toolwindow.navigation.SpringRequestMappingNavigationItem;
+import com.gitee.threefish.idea.spring.toolwindow.tree.ApiMutableTreeNode;
+import com.gitee.threefish.idea.spring.toolwindow.tree.TreeNodeObject;
+import com.gitee.threefish.idea.spring.toolwindow.tree.TreeObjectTypeEnum;
 import com.intellij.ui.treeStructure.SimpleTree;
 
 import javax.swing.tree.TreePath;

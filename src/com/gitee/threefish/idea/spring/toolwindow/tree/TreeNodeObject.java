@@ -1,6 +1,6 @@
-package com.gitee.threefish.idea.toolwindow.tree;
+package com.gitee.threefish.idea.spring.toolwindow.tree;
 
-import com.gitee.threefish.idea.toolwindow.navigation.SpringRequestMappingNavigationItem;
+import com.gitee.threefish.idea.spring.toolwindow.navigation.SpringRequestMappingNavigationItem;
 import com.gitee.threefish.idea.util.Icons;
 import com.intellij.icons.AllIcons;
 import com.intellij.ide.util.treeView.NodeDescriptor;
