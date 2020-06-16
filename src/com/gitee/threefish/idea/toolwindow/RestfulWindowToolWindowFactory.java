@@ -28,12 +28,12 @@ import javax.swing.tree.TreeSelectionModel;
 public class RestfulWindowToolWindowFactory implements ToolWindowFactory, DumbAware {
 
     private static final String TITLE = "Spring Api Tool";
-    private final SimpleTree apiTree = new SimpleTree();
     private final ActionManager actionManager = ActionManager.getInstance();
     private ToolWindowEx toolWindowEx;
 
     @Override
     public void createToolWindowContent(@NotNull Project project, @NotNull ToolWindow toolWindow) {
+        final SimpleTree apiTree = new SimpleTree();
         apiTree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
         this.toolWindowEx = (ToolWindowEx) toolWindow;
         RefreshAction refreshAction = new RefreshAction("刷新", "重新加载URL", AllIcons.Actions.Refresh, toolWindowEx, apiTree);

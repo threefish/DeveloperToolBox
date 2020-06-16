@@ -17,13 +17,13 @@ import javax.swing.*;
 public class TreeNodeObject extends NodeDescriptor {
 
 
-    private final TreeObjectType treeObjectType;
+    private final TreeObjectTypeEnum treeObjectType;
     private final String name;
     private final Project project;
     private SpringRequestMappingNavigationItem urlMappingPsiBasedElement;
     private RequestMethod[] requestMethods;
 
-    public TreeNodeObject(Project project, TreeObjectType treeObjectType, String name) {
+    public TreeNodeObject(Project project, TreeObjectTypeEnum treeObjectType, String name) {
         super(project, null);
         this.project = project;
         this.treeObjectType = treeObjectType;
@@ -36,7 +36,7 @@ public class TreeNodeObject extends NodeDescriptor {
         this.project = urlMappingPsiBasedElement.getProject();
         this.name = urlMappingPsiBasedElement.getText();
         this.urlMappingPsiBasedElement = urlMappingPsiBasedElement;
-        this.treeObjectType = TreeObjectType.REQUEST;
+        this.treeObjectType = TreeObjectTypeEnum.REQUEST;
         this.requestMethods = requestMethods;
         this.init();
     }
@@ -44,11 +44,11 @@ public class TreeNodeObject extends NodeDescriptor {
     private void init() {
         Icon icon = SpringApiIcons.SpringWeb;
         //根据数据节点里的nodeType数据决定节点图标
-        if (this.treeObjectType == TreeObjectType.REQUEST) {
+        if (this.treeObjectType == TreeObjectTypeEnum.REQUEST) {
             icon = Icons.getMethodIcon(requestMethods);
-        } else if (this.treeObjectType == TreeObjectType.MODULE) {
+        } else if (this.treeObjectType == TreeObjectTypeEnum.MODULE) {
             icon = AllIcons.Nodes.ModuleGroup;
-        } else if (this.treeObjectType == TreeObjectType.ROOT) {
+        } else if (this.treeObjectType == TreeObjectTypeEnum.ROOT) {
             icon = SpringApiIcons.Spring;
         }
         this.setIcon(icon);
@@ -70,7 +70,7 @@ public class TreeNodeObject extends NodeDescriptor {
     }
 
 
-    public TreeObjectType getTreeObjectType() {
+    public TreeObjectTypeEnum getTreeObjectType() {
         return treeObjectType;
     }
 

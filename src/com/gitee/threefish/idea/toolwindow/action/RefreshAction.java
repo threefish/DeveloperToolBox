@@ -3,7 +3,7 @@ package com.gitee.threefish.idea.toolwindow.action;
 import com.gitee.threefish.idea.toolwindow.navigation.SpringRequestMappingNavigationItem;
 import com.gitee.threefish.idea.toolwindow.tree.ApiMutableTreeNode;
 import com.gitee.threefish.idea.toolwindow.tree.TreeNodeObject;
-import com.gitee.threefish.idea.toolwindow.tree.TreeObjectType;
+import com.gitee.threefish.idea.toolwindow.tree.TreeObjectTypeEnum;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.module.Module;
@@ -68,7 +68,7 @@ public class RefreshAction extends DumbAwareAction {
                         for (Module module : modules) {
                             SpringMvcService springMvcService = SpringMvcService.getInstance();
                             Set<UrlMapping<?>> urlMappings = springMvcService.getUrlMappings(module);
-                            ApiMutableTreeNode apiMutableTreeNode = new ApiMutableTreeNode(new TreeNodeObject(project, TreeObjectType.MODULE, module.getName()));
+                            ApiMutableTreeNode apiMutableTreeNode = new ApiMutableTreeNode(new TreeNodeObject(project, TreeObjectTypeEnum.MODULE, module.getName()));
                             List<ApiMutableTreeNode> list = new ArrayList<>();
                             for (UrlMapping<?> urlMapping : urlMappings) {
                                 if (urlMapping instanceof UrlMappingPsiBasedElement) {
@@ -98,7 +98,7 @@ public class RefreshAction extends DumbAwareAction {
                                 root.add(apiMutableTreeNode);
                             }
                         }
-                        root.setUserObject(new TreeNodeObject(project, TreeObjectType.ROOT, "Found " + size + " api"));
+                        root.setUserObject(new TreeNodeObject(project, TreeObjectTypeEnum.ROOT, "Found " + size + " api"));
                         apiTree.setModel(new DefaultTreeModel(root));
                     });
                 }

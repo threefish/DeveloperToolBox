@@ -4,7 +4,7 @@ package com.gitee.threefish.idea.toolwindow.action;
 import com.gitee.threefish.idea.toolwindow.navigation.SpringRequestMappingNavigationItem;
 import com.gitee.threefish.idea.toolwindow.tree.ApiMutableTreeNode;
 import com.gitee.threefish.idea.toolwindow.tree.TreeNodeObject;
-import com.gitee.threefish.idea.toolwindow.tree.TreeObjectType;
+import com.gitee.threefish.idea.toolwindow.tree.TreeObjectTypeEnum;
 import com.intellij.ui.treeStructure.SimpleTree;
 
 import javax.swing.tree.TreePath;
@@ -36,7 +36,7 @@ public class ApiTreeMouseAdapter extends MouseAdapter {
                 ApiMutableTreeNode node = (ApiMutableTreeNode) selPath.getLastPathComponent();
                 if (Objects.nonNull(node)) {
                     TreeNodeObject userObject = (TreeNodeObject) node.getUserObject();
-                    if (!(userObject.getTreeObjectType() == TreeObjectType.MODULE || userObject.getTreeObjectType() == TreeObjectType.ROOT)) {
+                    if (!(userObject.getTreeObjectType() == TreeObjectTypeEnum.MODULE || userObject.getTreeObjectType() == TreeObjectTypeEnum.ROOT)) {
                         SpringRequestMappingNavigationItem springRequestMappingNavigationItem = userObject.getUrlMappingPsiBasedElement();
                         //PsiNavigateUtil.navigate(springRequestMappingNavigationItem);
                         if (Objects.nonNull(node) && springRequestMappingNavigationItem.canNavigate()) {
