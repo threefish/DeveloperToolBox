@@ -2,7 +2,7 @@
     <id>com.gitee.threefish.idea.code.tool.plugin</id>
     <name>Developer Tool Box</name>
     <version>1.0.1</version>
-    <idea-version since-build="201"/>
+    <idea-version since-build="212"/>
     <vendor email="huchuc@vip.qq.com" url="https://gitee.com/threefish/">threefish</vendor>
     <description><![CDATA[
       <h1>A toolkit for easy development</h1>
@@ -64,6 +64,7 @@
         <!-- Add your actions here -->
         <action id="GoToSpringRequestMapping" class="com.gitee.threefish.idea.spring.action.GoToRequestMappingAction"
                 text="Find Spring Request Mapping Url" description="Find Spring Request Mapping Url" icon="/icons/find.png">
+            <add-to-group group-id="GoToTargetEx" anchor="first"/>
         </action>
 
     </actions>

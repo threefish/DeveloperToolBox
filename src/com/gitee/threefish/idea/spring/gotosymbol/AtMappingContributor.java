@@ -8,9 +8,9 @@ import com.intellij.openapi.module.ModuleManager;
 import com.intellij.openapi.project.DumbAware;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiElement;
-import com.intellij.spring.web.mvc.mapping.UrlMapping;
-import com.intellij.spring.web.mvc.model.mappings.UrlMappingPsiBasedElement;
-import com.intellij.spring.web.mvc.services.SpringMvcService;
+import com.intellij.spring.mvc.mapping.UrlMappingElement;
+import com.intellij.spring.mvc.model.mappings.UrlMappingPsiBasedElement;
+import com.intellij.spring.mvc.services.SpringMvcService;
 import com.intellij.xml.util.PsiElementPointer;
 import org.jetbrains.annotations.NotNull;
 
@@ -66,13 +66,14 @@ public class AtMappingContributor implements ChooseByNameContributor, DumbAware 
         Module[] modules = ModuleManager.getInstance(project).getModules();
         List<PsiElement> psiElements = new ArrayList<>();
         for (Module module : modules) {
-            Set<UrlMapping<?>> urlMappings = springMvcService.getUrlMappings(module);
+            Set<UrlMappingElement> urlMappings = springMvcService.getUrlMappingsElements(module);
             urlMappings.forEach(urlMapping -> {
                 if (urlMapping instanceof UrlMappingPsiBasedElement) {
                     UrlMappingPsiBasedElement urlMappingPsiBasedElement = (UrlMappingPsiBasedElement) urlMapping;
                     PsiElementPointer definition = urlMappingPsiBasedElement.getDefinition();
                     PsiElement navigationElement = definition.getPsiElement();
-                    SpringRequestMappingNavigationItem springRequestMappingNavigationItem = new SpringRequestMappingNavigationItem(navigationElement, urlMapping.getURL(),urlMappingPsiBasedElement.getMethod());
+                    SpringRequestMappingNavigationItem springRequestMappingNavigationItem = new SpringRequestMappingNavigationItem(navigationElement, urlMapping.getURL(),
+                            urlMappingPsiBasedElement.getMethod());
                     psiElements.add(springRequestMappingNavigationItem);
                 }
             });

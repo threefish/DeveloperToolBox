@@ -19,9 +19,9 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.wm.ex.ToolWindowEx;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.util.PsiUtil;
-import com.intellij.spring.web.mvc.mapping.UrlMapping;
-import com.intellij.spring.web.mvc.model.mappings.UrlMappingPsiBasedElement;
-import com.intellij.spring.web.mvc.services.SpringMvcService;
+import com.intellij.spring.mvc.mapping.UrlMappingElement;
+import com.intellij.spring.mvc.model.mappings.UrlMappingPsiBasedElement;
+import com.intellij.spring.mvc.services.SpringMvcService;
 import com.intellij.ui.treeStructure.SimpleTree;
 import com.intellij.xml.util.PsiElementPointer;
 import org.jetbrains.annotations.NotNull;
@@ -67,10 +67,10 @@ public class RefreshAction extends DumbAwareAction {
                         ApiMutableTreeNode root = new ApiMutableTreeNode();
                         for (Module module : modules) {
                             SpringMvcService springMvcService = SpringMvcService.getInstance();
-                            Set<UrlMapping<?>> urlMappings = springMvcService.getUrlMappings(module);
+                            Set<UrlMappingElement> urlMappings = springMvcService.getUrlMappingsElements(module);
                             ApiMutableTreeNode apiMutableTreeNode = new ApiMutableTreeNode(new TreeNodeObject(project, TreeObjectTypeEnum.MODULE, module.getName()));
                             List<ApiMutableTreeNode> list = new ArrayList<>();
-                            for (UrlMapping<?> urlMapping : urlMappings) {
+                            for (UrlMappingElement urlMapping : urlMappings) {
                                 if (urlMapping instanceof UrlMappingPsiBasedElement) {
                                     UrlMappingPsiBasedElement urlMappingPsiBasedElement = (UrlMappingPsiBasedElement) urlMapping;
                                     PsiElementPointer definition = urlMappingPsiBasedElement.getDefinition();

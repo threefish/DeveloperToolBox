@@ -5,9 +5,8 @@ import com.gitee.threefish.idea.util.Icons;
 import com.intellij.icons.AllIcons;
 import com.intellij.ide.util.treeView.NodeDescriptor;
 import com.intellij.openapi.project.Project;
-import com.intellij.spring.web.mvc.jam.RequestMethod;
-import icons.SpringApiIcons;
-
+import com.intellij.spring.SpringApiIcons;
+import com.intellij.spring.mvc.jam.RequestMethod;
 import javax.swing.*;
 
 /**

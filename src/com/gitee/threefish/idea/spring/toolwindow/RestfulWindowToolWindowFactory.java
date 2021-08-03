@@ -3,18 +3,18 @@ package com.gitee.threefish.idea.spring.toolwindow;
 import com.gitee.threefish.idea.spring.toolwindow.action.ApiTreeMouseAdapter;
 import com.gitee.threefish.idea.spring.toolwindow.action.RefreshAction;
 import com.gitee.threefish.idea.spring.toolwindow.ui.RestServicesNavigatorPanel;
-import com.intellij.icons.AllIcons;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.project.DumbAware;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.wm.ToolWindow;
 import com.intellij.openapi.wm.ToolWindowFactory;
 import com.intellij.openapi.wm.ex.ToolWindowEx;
+import com.intellij.spring.SpringApiIcons;
 import com.intellij.ui.content.Content;
 import com.intellij.ui.content.ContentManager;
 import com.intellij.ui.treeStructure.SimpleTree;
-import icons.SpringApiIcons;
 import org.jetbrains.annotations.NotNull;
+import com.intellij.icons.AllIcons;
 
 import javax.swing.tree.TreeSelectionModel;
 
@@ -33,6 +33,7 @@ public class RestfulWindowToolWindowFactory implements ToolWindowFactory, DumbAw
 
     @Override
     public void createToolWindowContent(@NotNull Project project, @NotNull ToolWindow toolWindow) {
+
         final SimpleTree apiTree = new SimpleTree();
         apiTree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
         this.toolWindowEx = (ToolWindowEx) toolWindow;

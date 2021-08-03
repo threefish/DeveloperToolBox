@@ -2,9 +2,9 @@ package com.gitee.threefish.idea.spring.toolwindow.navigation;
 
 import com.gitee.threefish.idea.util.Icons;
 import com.intellij.psi.PsiElement;
-import com.intellij.spring.web.mvc.jam.RequestMethod;
+import com.intellij.spring.SpringApiIcons;
+import com.intellij.spring.mvc.jam.RequestMethod;
 import com.intellij.util.xml.model.gotosymbol.GoToSymbolProvider;
-import icons.SpringApiIcons;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

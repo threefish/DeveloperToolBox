@@ -1,21 +1,23 @@
 package com.gitee.threefish.idea.util;
 
-import com.intellij.openapi.util.IconLoader;
-import com.intellij.spring.web.mvc.jam.RequestMethod;
-import icons.SpringApiIcons;
+import com.intellij.spring.SpringApiIcons;
+import com.intellij.spring.mvc.jam.RequestMethod;
+
 
 import javax.swing.*;
 import java.util.Objects;
+
+import static com.intellij.openapi.util.IconLoader.*;
 
 /**
  * @author 黄川 huchuc@vip.qq.com
  * @date: 2020/6/10
  */
 public class Icons {
-    public static final Icon POST = IconLoader.findIcon("/icons/POST.png");
-    public static final Icon GET = IconLoader.findIcon("/icons/GET.png");
-    public static final Icon PUT = IconLoader.findIcon("/icons/PUT.png");
-    public static final Icon DELETE = IconLoader.findIcon("/icons/DELETE.png");
+    public static final Icon POST = findIcon("/icons/POST.png");
+    public static final Icon GET = findIcon("/icons/GET.png");
+    public static final Icon PUT = findIcon("/icons/PUT.png");
+    public static final Icon DELETE = findIcon("/icons/DELETE.png");
 
 
     public static Icon getMethodIcon(RequestMethod[] method) {
